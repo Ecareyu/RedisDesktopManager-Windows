@@ -10,8 +10,8 @@ on:
     branches: 
       - master
       - feature/test-flow
-  pull_request:
-    branches: [ master ]
+  watch:
+    types: started
 
 env:
   RDM_TARGET_BRANCH: 2021
