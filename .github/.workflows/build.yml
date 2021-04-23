@@ -9,7 +9,7 @@ on:
   push:
     branches: 
       - master
-      - test-flow
+      - feature/test-flow
   pull_request:
     branches: [ master ]
 
