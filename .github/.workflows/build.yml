@@ -9,25 +9,23 @@ on:
   push:
     branches: 
       - master
-      - feature/test-flow
-  watch:
-    types: started
+      - feature/*
 
 env:
   RDM_TARGET_BRANCH: 2021
   PYTHON_EMBEDDED_VERSION: 3.8.8
   
-  # directories
-  REPO_DIR: %CD%
-  RDM_DIR: C:\projects\RDM
-  VCREDIST_DIR: C:\projects\vcredist
-  RESOURCE_DIR: %RDM_DIR%\build\windows\installer\resources
-  OPENSSL_DIR: C:\OpenSSL-Win64
-  GITBASH_DIR: C:\Program Files\Git\usr\bin
-  PY_DIR: C:\Python38-x64
-  QT_DIR: C:\Qt\5.15\msvc2019_64
-  # prefer using Linux utils such as "find"
-  PATH: %GITBASH_DIR%;%PY_DIR%;%QT_DIR%\bin;%PATH%
+#   # directories
+#   REPO_DIR: %CD%
+#   RDM_DIR: C:\projects\RDM
+#   VCREDIST_DIR: C:\projects\vcredist
+#   RESOURCE_DIR: %RDM_DIR%\build\windows\installer\resources
+#   OPENSSL_DIR: C:\OpenSSL-Win64
+#   GITBASH_DIR: C:\Program Files\Git\usr\bin
+#   PY_DIR: C:\Python38-x64
+#   QT_DIR: C:\Qt\5.15\msvc2019_64
+#   # prefer using Linux utils such as "find"
+#   PATH: %GITBASH_DIR%;%PY_DIR%;%QT_DIR%\bin;%PATH%
 
 
 
@@ -39,16 +37,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
+        run: dir 
 
-      - name: Install
-        run: |
-          git submodule update --init --recursive --depth 1
-          git clone \
-          --depth=1 \
-          --recursive \
-          --branch=%RDM_TARGET_BRANCH% \
-          https://github.com/uglide/RedisDesktopManager.git \
-          "%RDM_DIR%"
+      # - name: Install Dependencies
+      #   run: |
+      #     git submodule update --init --recursive --depth 1
+      #     git clone \
+      #     --depth=1 \
+      #     --recursive \
+      #     --branch=%RDM_TARGET_BRANCH% \
+      #     https://github.com/uglide/RedisDesktopManager.git \
+      #     "%RDM_DIR%"
         
 
   # This workflow contains a single job called "build"
