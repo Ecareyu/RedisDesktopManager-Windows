@@ -39,7 +39,7 @@ jobs:
         # uses: actions/checkout@feature
         run: |
           dir 
-          echo ${{ RDM_TARGET_BRANCH }}
+          echo %RDM_TARGET_BRANCH%
 
       # - name: Install Dependencies
       #   run: |
